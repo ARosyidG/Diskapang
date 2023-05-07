@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Berita;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Support\Str;
+
 
 class AdminController extends Controller
 {
@@ -22,6 +25,7 @@ class AdminController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -29,7 +33,6 @@ class AdminController extends Controller
      */
     public function store(StoreAdminRequest $request)
     {
-        //
     }
 
     /**
@@ -59,8 +62,8 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Admin $admin)
+    public function destroy(Berita $id)
     {
         //
-    }
+        
 }

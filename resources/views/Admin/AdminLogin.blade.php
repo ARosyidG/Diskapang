@@ -9,7 +9,9 @@
   <body>
     <div id="LoginBox" class="bg-white border border-warning p-3 rounded" style="left: 50%; top: 50%; transform: translate(-50%, -50%); position:absolute;">
         <h1>LOGIN</h1>
-        
+        @auth
+          <div>Udh Login anjir</div>
+        @endauth
         @if(session()->has('loginError'))
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('loginError') }}

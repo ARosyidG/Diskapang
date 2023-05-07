@@ -5,23 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Http\Requests\StoreBeritaRequest;
 use App\Http\Requests\UpdateBeritaRequest;
+use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\String_;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+
 
 class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function checkSlug(Request $request){
+        // dd($request->input('Judul'));
+        $Slug = SlugService::createSlug(Berita::class, 'Slug', $request->Judul);
+        // dd($Slug);
+        return response()->json(['Slug' => $Slug]);
+    }
+     public function index()
     {
         //
         return view('Berita', ['berita' => Berita::all()]);
     }
-    public function adminAll(){
-        // dd();
-        // dd(Berita::all());
-        return view('Admin/Berita', ['berita' => Berita::all()]);
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,6 +34,7 @@ class BeritaController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -37,6 +43,7 @@ class BeritaController extends Controller
     public function store(StoreBeritaRequest $request)
     {
         //
+        dd($request);
     }
 
     /**
@@ -45,7 +52,11 @@ class BeritaController extends Controller
     public function show(String $berita)
     {
         $Post = Berita::all()->firstWhere('Slug', $berita);
-        return view('BacaBerita', ['berita'=>$Post]);
+        // $Post->view = $Post->view + 1;
+        $Data['view'] = $Post->view + 1;
+        Berita::where('id',$Post->id)->update($Data);
+        // dd($Post->view);
+        return view('BacaBerita', ['berita'=>$Post, 'recomend'=> Berita::all()->random(4)]);
     }
 
     /**

@@ -19,14 +19,16 @@ class DatabaseSeeder extends Seeder
         DB::table('Admins')->insert([
             'name' => 'Ganausi',
             'username' => 'Ganausi',
-            'password' => Hash::make('qscaxz12')
+            'password' => Hash::make('qscaxz12'),
+            'role' => 'Admin'
         ]);
-        DB::table('users')->insert([
-            'Name' => 'Ganausi',
-            'email' => 'Ganausi',
-            'Password' => 'qscaxz12'
+        DB::table('Admins')->insert([
+            'name' => 'PPID',
+            'username' => 'PPID',
+            'password' => Hash::make('qscaxz12'),
+            'role' => 'PPID'
         ]);
-        Admin::factory(3)->create();
+        // Admin::factory(3)->create();
         Berita::factory(30)->create();
 
         // \App\Models\User::factory()->create([

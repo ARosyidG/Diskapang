@@ -30,6 +30,14 @@ class CommentController extends Controller
     public function store(StoreCommentRequest $request)
     {
         //
+        $Data= $request->validate([
+            'Name' => 'required',
+            'Email' => 'required',
+            'Berita_id' => 'required',
+            'comment' => 'required'
+        ]);
+        Comment::create($Data);
+        return back();
     }
 
     /**

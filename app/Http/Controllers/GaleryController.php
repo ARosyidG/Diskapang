@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galery;
-use App\Http\Requests\StoreGaleryRequest;
-use App\Http\Requests\UpdateGaleryRequest;
+use Illuminate\Http\Request;
 
 class GaleryController extends Controller
 {
@@ -14,6 +13,7 @@ class GaleryController extends Controller
     public function index()
     {
         //
+        return view('Admin.Galery', ['Gambar' => Galery::all()]);
     }
 
     /**
@@ -27,9 +27,17 @@ class GaleryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGaleryRequest $request)
+    public function store(Request $request)
     {
         //
+        $Data = $request->validate([
+            'Caption' => 'required',
+            'name' => 'required'
+        ]);
+        $Data['name'] = $request->file('name')->store('Galeri');
+        // dd($Data['path']);
+        Galery::create($Data);
+        return redirect('/Admin/Galeri')->with('success', 'Data sudah ditambahkan');
     }
 
     /**
@@ -51,7 +59,7 @@ class GaleryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGaleryRequest $request, Galery $galery)
+    public function update(Request $request, Galery $galery)
     {
         //
     }

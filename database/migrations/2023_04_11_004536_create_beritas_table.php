@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('Slug')->unique();
             $table->text('excerpt');
             $table->text('isi');
+            $table->text('Gambar')->nullable();
+            $table->integer('view')->nullable();
             $table->timestamp('Publish_at')->nullable();
             $table->timestamps();
         });

@@ -21,7 +21,8 @@ class BeritaFactory extends Factory
             'Judul' => fake()->sentence(mt_rand(1,5)),
             'Slug' => fake()->unique()->slug(),
             'excerpt' => fake()->paragraph(mt_rand(10,20)),
-            'isi' => collect(fake()->paragraphs(mt_rand(2,5)))->map(fn($p) => "<p>$p</p>")->implode('')
+            'isi' => collect(fake()->paragraphs(mt_rand(2,5)))->map(fn($p) => "<p>$p</p>")->implode(''),
+            'Gambar' => '/Gambar/no-image.jpg'
         ];
     }   
 }
