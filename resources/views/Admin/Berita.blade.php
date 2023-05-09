@@ -10,14 +10,19 @@
     }
 </style>
 @section('Main')
-    <div class="input-group rounded">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <span class="input-group-text border-0" id="search-addon"><i class="bi bi-search"></i></span>
-        <button class="btn btn-primary">
-            <i class="bi bi-funnel-fill"></i>
-            <i>Filter</i>
-        </button>
-    </div>
+    <form action="/Admin/Berita/Cari" method="post">
+        @csrf
+        <div class="input-group rounded">
+            <input type="search" name="key" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn input-group-text border-0">
+                <span class="input-group-text border-0" id="search-addon"><i class="bi bi-search"></i></span>
+            </button>
+            <button class="btn btn-primary">
+                <i class="bi bi-funnel-fill"></i>
+                <i>Filter</i>
+            </button>
+        </div>
+    </form>
     
     <div class="pb-3"><small><i>Cari Berita</i></small></div>
     {{-- {{  }} --}}

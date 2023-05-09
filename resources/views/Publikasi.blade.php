@@ -32,16 +32,21 @@
     <ul class="list-group list-group flex-column mb-auto mt-3">
         <li class="list-group-item p-1 bg-warning text-white">Pengumuman</li>
         <li id="Berita" class="list-group-item p-1 px-3" >
-            @foreach ($Pengumuman as $p)
-                <table class="table">
-                    <thead>
-                        <th scope="col">Pengumuman</th>
-                    </thead>
-                    <tbody>
+            <table class="table">
+                <thead>
+                    <thead scope="col"> <th>
+                        Pengumuman
+                    </th>
+                </thead>
+                </thead>
+                <tbody>
+                    @foreach ($Pengumuman as $p)
+                    <tr>
                         <td>{{ $p->isipengumuman }}</td>
+                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
-            @endforeach
         </li>
     </ul>
     @endif

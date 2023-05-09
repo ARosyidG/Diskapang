@@ -16,7 +16,9 @@
         </div>
         <div class="form-group">
             <input type="hidden" class="form-control" id="Slug" name="Slug" value="{{ old('Slug') }}">
+            <input type="hidden" class="form-control" id="isPublish" name="isPublish" value=false>
         </div>
+        
         <div class="form-group mt-3">
             <label for="isi">Article</label>
             {{-- <input type="hidden" name="isi" id="isi"> --}}
@@ -25,8 +27,9 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
+
         <button class="btn btn-primary mt-3" type="submit">Save</button>
-        <button class="btn btn-primary mt-3" type="button" id="Publish">Publish</button>
+        <button class="btn btn-primary mt-3" type="submit" onclick="Publish()">Publish</button>
     </form>
     <script src="/_js/create.js"></script>
 @endsection

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
-use App\Http\Requests\StoreBeritaRequest;
-use App\Http\Requests\UpdateBeritaRequest;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\String_;
+use App\Http\Requests\StoreBeritaRequest;
+use App\Http\Requests\UpdateBeritaRequest;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 
@@ -15,22 +15,27 @@ class BeritaController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function checkavailability(Request $request){
+        
+    }
     public function checkSlug(Request $request){
         // dd($request->input('Judul'));
         $Slug = SlugService::createSlug(Berita::class, 'Slug', $request->Judul);
         // dd($Slug);
         return response()->json(['Slug' => $Slug]);
     }
+    public function Publish(Request $request){
+        // dd([$request->id, $request->PublishDate]);
+        // Berita::where('id')
+        $data['Publish_at'] = $request->PublishDate;
+        Berita::where('Slug',$request->id)->update($data);
+    }
      public function index()
     {
         //
-        return view('Berita', ['berita' => Berita::all()]);
+        // dd(Berita::all()->whereNotNull('Publish_at'));
+        return view('Berita', ['berita' => Berita::all()->whereNotNull('Publish_at')]);
     }
-
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //

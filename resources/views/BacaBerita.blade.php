@@ -11,7 +11,7 @@
     <div class="d-flex flex-wrap flex-md-nowrap">
         <div id="post" class="" style="">
             <div class="overflow-hidden" style="height:300px;">
-                <img src="{{ $berita->Gambar }}" alt="" style="width: 100%;">
+                <img src="/{{ $berita->Gambar }}" alt="" style="width: 100%;">
             </div>
             <h1 class="w-100" style="border-bottom: solid 4px black">
                 {{ $berita->Judul }}

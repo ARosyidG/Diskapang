@@ -34,7 +34,9 @@ class GaleryController extends Controller
             'Caption' => 'required',
             'name' => 'required'
         ]);
-        $Data['name'] = $request->file('name')->store('Galeri');
+        $fileExt = $request->file('name')->getClientOriginalExtension();
+        $fileName = $request->Caption . '.' . $fileExt;
+        $Data['name'] = $request->file('name')->storeAS('Galeri', $fileName);
         // dd($Data['path']);
         Galery::create($Data);
         return redirect('/Admin/Galeri')->with('success', 'Data sudah ditambahkan');

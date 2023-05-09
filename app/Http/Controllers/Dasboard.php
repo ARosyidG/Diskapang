@@ -40,6 +40,13 @@ class Dasboard extends Controller
             'isi' => 'required',
             'Gambar' => 'image'
         ]);
+        // $fileName = $request->file('avatar');
+        // dd($fileName);
+        // dd($request->isPublish);
+        if($request->isPublish == "true"){
+            // dd(date('Y-m-d H:i:s'));
+            $Data['Publish_at'] = date('Y-m-d H:i:s');;
+        }
         if($request->file('Gambar')){
             $Data['Gambar'] = $request->file('Gambar')->store('Gambar');
         
@@ -47,6 +54,7 @@ class Dasboard extends Controller
             $Data['Gambar'] = 'Gambar/no-image.jpg';
         }
         // dd($Data);
+
         $Data['excerpt'] = Str::limit(strip_tags($request->isi), 100);
         Berita::create($Data);
         return redirect('/Admin/Berita')->with('success', 'Barita sudah ditambahkan');
@@ -79,12 +87,15 @@ class Dasboard extends Controller
      */
     public function update(Request $request, int $id)
     {
-
+        // dd($request);
         $rule = [
             'Judul' => 'required',
             'isi' => 'required'
         ];
         $Berita = DB::table('beritas')->where('id', $id)->first();
+        if($request->file('Gambar')){
+            $Data['Gambar'] = $request->file('Gambar')->store('Gambar');
+        }
         if($request->Slug != $Berita->Slug){
             $rule['Slug'] = 'required|unique:beritas';
         }
@@ -103,5 +114,8 @@ class Dasboard extends Controller
         // dd($berita);
         Berita::destroy($id);
         return redirect('/Admin/Berita')->with('success', 'Barita sudah dihapus');
+    }
+    public function cari(Request $request){
+        return view('Admin.Berita', ['berita' => Berita::all()->where('Judul','like', "%".$request->key."%")]);
     }
 }

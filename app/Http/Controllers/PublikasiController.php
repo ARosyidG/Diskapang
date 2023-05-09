@@ -52,7 +52,10 @@ class PublikasiController extends Controller
                 'Tahun' => 'required',
                 'File' => 'required'
             ]);
-            $Data['path'] = $request->file('File')->store('PPID');
+            $fileExt = $request->file('File')->getClientOriginalExtension();
+            $fileName = $request->Name . '.' . $fileExt;
+            // dd($fileName);
+            $Data['path'] = $request->file('File')->storeAs('PPID', $fileName);
             // dd($Data['path']);
             File::create($Data);
             return redirect('/Admin/Publikasi')->with('success', 'Data sudah ditambahkan');
@@ -103,8 +106,20 @@ class PublikasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(File $file)
+    public function destroy(int $file)
     {
         //
+        // dd("lol");
+        File::destroy($file);
+        return redirect('/Admin/Publikasi')->with('success', 'Barita sudah dihapus');
+    }
+    public function destroyPengumuman(int $id){
+        Pengumuman::destroy($id);
+        return redirect('/Admin/Publikasi')->with('success', 'Barita sudah dihapus');
+    }
+    public function destroyAgenda(int $id){
+        Agenda::destroy($id);
+        return redirect('/Admin/Publikasi')->with('success', 'Barita sudah dihapus');
     }
 }
+

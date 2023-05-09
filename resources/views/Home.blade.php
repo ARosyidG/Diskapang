@@ -48,12 +48,31 @@
                 <h2 id="About" class="p-2 ">
                     <span>Galeri</span>
                 </h2>
-                <div class="d-md-flex justify-content-around">
-                @foreach ($Galeri as $b)
-                <div class="card overflow-hidden mx-3" style="width: 100%; height: 15rem ">
-                    <img src="{{ $b->name }}" class="" alt="..." style="height: 100%; width:100%">
-                </div>
-                @endforeach
+                <div style="height:300px; width:100%;" class="d-flex justify-content-center">
+                <div id="carouselExampleControls" style="height:300px; width:100%;" class="carousel slide rounded d-flex justify-content-center bg-dark" data-ride="carousel">
+                    <div class="carousel-inner rounded" style="width: 500px">
+                        <div class="carousel-item active" style="height:100%; width:auto;">
+                            <span class="text-white w-100 px-3 pt-4 pb-2" style="bottom:0; z-index: 50; position: absolute; background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0));">{{ $Galeri[0]->Caption }}</span>
+                            <img class="d-block w-100 rounded" style="height:100%; width:auto;" src="{{ $Galeri[0]->name }}" alt="">
+                        </div>
+                        @foreach ($Galeri as $i => $b)
+                            @if ($i != 0)
+                            <div class="carousel-item rounded" style="height:100%; width:auto;">
+                                <span class="text-white w-100 px-3 pt-4 pb-2" style="bottom:0; z-index: 50; position: absolute; background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0));">{{ $b->Caption }}</span>
+                                <img class="d-block w-100 rounded" style="height:100%; width:auto;" src="{{ $b->name }}" alt="Third slide">
+                            </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
                 </div>
             </div>
             <div>
@@ -94,6 +113,13 @@
                           Kurang Baik
                         </label>
                     </div>
+                    <div class="form-group mt-3">
+                        <label class="form-check-label" for="email">
+                          E-mail
+                        </label>
+                        <input class="form-control" type="text" name="email" id="email" placeholder="Email">
+                    </div>
+                    <a href=""><button class="btn btn-primary mt-3" type="submit">Submit</button></a>
                 </form>
             </div>
         </div>

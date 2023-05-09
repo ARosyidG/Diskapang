@@ -22,7 +22,7 @@ class BeritaFactory extends Factory
             'Slug' => fake()->unique()->slug(),
             'excerpt' => fake()->paragraph(mt_rand(10,20)),
             'isi' => collect(fake()->paragraphs(mt_rand(2,5)))->map(fn($p) => "<p>$p</p>")->implode(''),
-            'Gambar' => '/Gambar/no-image.jpg'
+            'Gambar' => 'Gambar/no-image.jpg'
         ];
     }   
 }

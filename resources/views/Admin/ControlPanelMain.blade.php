@@ -15,20 +15,30 @@
         background-color: brown;
       }
     </style> --}}
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+      /* body{
+          margin: 0 5px 0 5px;
+      } */
+      h2, h1, h3{
+          font-family: 'Fjalla One', sans-serif;
+          text-transform: uppercase;
+      }
+  </style>
   </head>
   <body>
     <nav class="navbar bg-warning navbar-expand-md px-2 shadow">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="#" class="navbar-brand me-auto">DISKAPANG</a>
+      <a href="/Admin" class="navbar-brand me-auto">DISKAPANG</a>
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="d-block d-md-none">
             <li class="nav nav-item p-1"><a href="/Admin/Berita" class="nav-link">Berita</a></li>
             <li class="nav nav-item p-1"><a href="/Admin/Publikasi" class="nav-link">Publikasi</a></li>
-            <li class="nav nav-item p-1"><a href="/Admin/Kontak" class="nav-link">Kontak</a></li>
             <li class="nav nav-item p-1"><a href="/Admin/Galeri" class="nav-link">Galeri</a></li>
+            <li class="nav nav-item p-1"><a href="/Admin/Pesan" class="nav-link">Pesan</a></li>
         </div>
       </div>
       <form action="/Admin/Logout" method="post" class="m-0">
@@ -44,7 +54,7 @@
           <ul class="nav navbar-light list-group list-group-flush nav-pills flex-column mb-auto">
             <li class="list-group-item p-1"><a href="/Admin/Berita" class="nav-link">Berita</a></li>
             <li class="list-group-item p-1"><a href="/Admin/Publikasi" class="nav-link">Publikasi</a></li>
-            <li class="list-group-item p-1"><a href="/Admin/Kontak" class="nav-link">Kontak</a></li>
+            <li class="list-group-item p-1"><a href="/Admin/Kontak" class="nav-link">Pesan</a></li>
             <li class="list-group-item p-1"><a href="/Admin/Galeri" class="nav-link">Galeri</a></li>
           </ul>
           <div></div>
