@@ -49,7 +49,7 @@ class Dasboard extends Controller
         }
         if($request->file('Gambar')){
             $Data['Gambar'] = $request->file('Gambar')->store('Gambar');
-        
+
         }else{
             $Data['Gambar'] = 'Gambar/no-image.jpg';
         }
@@ -87,7 +87,7 @@ class Dasboard extends Controller
      */
     public function update(Request $request, int $id)
     {
-        // dd($request);
+        dd($request);
         $rule = [
             'Judul' => 'required',
             'isi' => 'required'
@@ -113,7 +113,7 @@ class Dasboard extends Controller
 
         // dd($berita);
         Berita::destroy($id);
-        return redirect('/Admin/Berita')->with('success', 'Barita sudah dihapus');
+        return redirect('/Surat')->with('success', 'Barita sudah dihapus');
     }
     public function cari(Request $request){
         return view('Admin.Berita', ['berita' => Berita::all()->where('Judul','like', "%".$request->key."%")]);

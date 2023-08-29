@@ -9,6 +9,8 @@ use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublikasiController;
+use App\Http\Controllers\test;
+use App\Http\Controllers\testingController;
 use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\File;
@@ -32,7 +34,6 @@ Route::get('/', function () {
         'berita' => Berita::all()->whereNotNull('Publish_at')->take(3),
         'Galeri' => Galery::all()->take(3),
         'Pengumuman' => Pengumuman::all()->take(3),
-
     ]);
 });
 Route::get('/Sejarah', function(){
@@ -96,3 +97,5 @@ Route::post('/Kontak/store',[KontakController::class, 'store']);
 Route::post('/Admin/Publikasi/Pengumuman/{id}', [PublikasiController::class ,'destroyPengumuman']);
 Route::post('/Admin/Publikasi/Agenda/{id}', [PublikasiController::class ,'destroyAgenda']);
 Route::get('/Admin/Kontak', [KontakController::class, 'index']);
+Route::get('/test',[test::class, 'test']);
+Route::get('/testing', [testingController::class, 'index']);

@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function create()
     {
         //
-        
+
     }
 
     /**
@@ -65,5 +65,5 @@ class AdminController extends Controller
     public function destroy(Berita $id)
     {
         //
-        
+    }
 }

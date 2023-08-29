@@ -32,7 +32,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a href="/Admin" class="navbar-brand me-auto">DISKAPANG</a>
-      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="d-block d-md-none">
             <li class="nav nav-item p-1"><a href="/Admin/Berita" class="nav-link">Berita</a></li>
@@ -82,7 +82,7 @@
         ]
       });
     </script>
-    
-    
+
+
   </body>
 </html>

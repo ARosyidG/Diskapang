@@ -18,14 +18,14 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         // $admins =Admin::all();
-        // dd($admins[0]->username); 
+        // dd($credentials);
         // dd([[$admins[0]->username, $admins[0]->password],$credentials, Auth::guard('admins')->attempt($credentials)]);
         if (Auth::guard('admins')->attempt($credentials)) {
             // dd();
             $request->session()->regenerate();
             return redirect()->intended('/Admin/Berita');
         }
-        
+
         return back()->with('loginError', 'username atau password salah!');
     }
     public function logout()
@@ -35,5 +35,5 @@ class LoginController extends Controller
         request()->session()->regenerateToken();
         return redirect('/');
     }
-    
+
 }

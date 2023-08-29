@@ -16,7 +16,7 @@ class BeritaController extends Controller
      * Display a listing of the resource.
      */
     public function checkavailability(Request $request){
-        
+
     }
     public function checkSlug(Request $request){
         // dd($request->input('Judul'));
@@ -39,7 +39,7 @@ class BeritaController extends Controller
     public function create()
     {
         //
-        
+
     }
 
     /**
@@ -60,7 +60,7 @@ class BeritaController extends Controller
         // $Post->view = $Post->view + 1;
         $Data['view'] = $Post->view + 1;
         Berita::where('id',$Post->id)->update($Data);
-        // dd($Post->view);
+        dd($Post);
         return view('BacaBerita', ['berita'=>$Post, 'recomend'=> Berita::all()->random(4)]);
     }
 
